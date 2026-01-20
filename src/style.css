@@ -1,0 +1,451 @@
+:root {
+    --bg-color: #121212;
+    --bg-secondary: #1e1e1e;
+    --text-primary: #ffffff;
+    --text-secondary: #aaaaaa;
+    --accent-green: #38b138;
+    --accent-hover: #4cd34c;
+    --nav-bg: rgba(18, 18, 18, 0.9);
+
+    --font-main: 'Inter', sans-serif;
+    --font-display: 'Noto Serif', serif;
+
+    --transition-speed: 0.3s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 2rem;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 48px;
+    width: auto;
+    transition: transform var(--transition-speed);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-item {
+    position: relative;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.nav-link {
+    transition: color var(--transition-speed);
+}
+
+.nav-item:hover .nav-link {
+    color: var(--accent-green);
+}
+
+/* Dropdowns */
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--bg-secondary);
+    min-width: 180px;
+    padding: 1rem 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all var(--transition-speed);
+}
+
+.has-dropdown:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown li a {
+    display: block;
+    padding: 0.5rem 1.5rem;
+    transition: background var(--transition-speed);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.dropdown li a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+/* Right Actions */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.btn-primary {
+    background-color: transparent;
+    color: var(--accent-green);
+    border: 2px solid var(--accent-green);
+    padding: 0.5rem 1.5rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all var(--transition-speed);
+    font-family: var(--font-main);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-green);
+    color: white;
+    box-shadow: 0 0 15px rgba(56, 177, 56, 0.4);
+}
+
+.account-menu {
+    position: relative;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.account-dropdown {
+    right: 0;
+    left: auto;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.hero-content {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-images {
+    width: 100%;
+    height: 600px;
+    position: relative;
+}
+
+.hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.hero-overlay-box {
+    position: absolute;
+    bottom: 50px;
+    left: 5%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    max-width: 500px;
+    border-left: 4px solid var(--accent-green);
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    z-index: 10;
+    opacity: 0;
+    /* Hidden initially, handled by Motion */
+    transform: translateY(20px);
+}
+
+.hero-overlay-box h1 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.hero-overlay-box p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.btn-cta {
+    background-color: var(--accent-green);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    font-family: var(--font-main);
+    text-transform: uppercase;
+}
+
+.btn-cta:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Gallery Section */
+.gallery {
+    padding: 2rem 0;
+    overflow-x: auto;
+}
+
+.gallery-track {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0 1rem;
+}
+
+.gallery-track img {
+    height: 100px;
+    border-radius: 4px;
+    transition: transform var(--transition-speed);
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.gallery-track img:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Separator */
+.separator {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #333, transparent);
+    margin: 3rem 0;
+}
+
+hr.card-divider {
+    border: 0;
+    height: 1px;
+    background: #444;
+    margin: 1rem 0;
+}
+
+/* Features */
+.features {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    text-align: left;
+    transition: background var(--transition-speed);
+}
+
+.feature-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.feature-card img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.feature-text h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.feature-text p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Games Store */
+.games-store {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.game-card {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.game-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.game-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.price {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: auto;
+}
+
+.btn-buy {
+    width: 100%;
+    padding: 1rem;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: var(--font-main);
+    transition: filter var(--transition-speed);
+}
+
+.btn-buy:hover {
+    filter: brightness(1.2);
+}
+
+.btn-green {
+    background-color: var(--accent-green);
+    color: white;
+}
+
+.btn-red {
+    background-color: #d32f2f;
+    color: white;
+}
+
+.btn-blue {
+    background-color: #1976d2;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .nav-menu,
+    .nav-actions {
+        display: none;
+        /* In a real app, implement a hamburger menu */
+    }
+
+    .navbar {
+        padding: 1rem;
+        height: auto;
+    }
+
+    .nav-container {
+        justify-content: center;
+    }
+
+    .hero-images {
+        height: 400px;
+    }
+
+    .hero-overlay-box {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        width: 90%;
+        margin: -100px auto 0;
+        border-radius: 8px;
+    }
+}
